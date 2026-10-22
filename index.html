@@ -2,177 +2,255 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>The State and the Cradle</title>
 <meta name="description" content="How Mexico and the Soviet Union used law, money, honors, services and housing to steer birth rates. ARCH 3198, University of Houston.">
 <meta name="author" content="Patricio Riviello">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&display=swap">
-<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..800;1,400..800&family=Archivo:wdth,wght@62..125,400..900&display=swap">
 <style>
+/* Layout: a multifamiliar grid. Rail for subheads, one reading column, a margin for notes; color appears only as solid planes. */
 :root{
-  --ground:#F1F2EE;
-  --paper:#FAFBF8;
-  --ink:#1A1E22;
-  --muted:#5B625E;
-  --rule:#D3D7CF;
-  --more:#A8651A;      /* policies pushing for more births */
-  --more-soft:#F3E4CF;
-  --fewer:#2342A6;     /* policies pushing for fewer births */
-  --fewer-soft:#DCE3F7;
-  --choice:#6B716D;
-  --choice-soft:#E4E6E1;
-  --display:"Archivo","Arial Narrow",Arial,sans-serif;
-  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
-  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --cal:#F3ECE0;        /* lime-wash wall: page ground */
+  --paper:#FBF7F1;      /* lighter plaster: inset surfaces */
+  --ink:#2A211B;
+  --muted:#6F6157;
+  --rule:#DDD0BF;
+  --more:#AE4826;       /* terracotta: policy pushing for more births */
+  --more-soft:#F1DCCD;
+  --more-plane:#AE4826;
+  --fewer:#1F5A4C;      /* deep green: policy pushing for fewer births */
+  --fewer-soft:#D5E5DD;
+  --fewer-plane:#1F5A4C;
+  --choice:#7E7268;     /* warm grey: policy widening choice */
+  --choice-soft:#E8E0D3;
+  --on-plane:#FBF3EA;
+
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"Alegreya",Georgia,"Times New Roman",serif;
+
+  --rail:13rem;
+  --text:42rem;
+  --note:17rem;
+  --gap:3rem;
+  color-scheme:light;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
+    --cal:#1A1613;--paper:#231E1A;--ink:#EEE5D8;--muted:#A99B8D;--rule:#3A3029;
+    --more:#E58A63;--more-soft:#3A2218;--more-plane:#9E4123;
+    --fewer:#7CC4AA;--fewer-soft:#15302A;--fewer-plane:#1E5547;
+    --choice:#AEA294;--choice-soft:#2C2621;--on-plane:#FBF1E6;
     color-scheme:dark;
-    --ground:#131619;--paper:#1A1E22;--ink:#E4E7E1;--muted:#9BA29D;--rule:#30363A;
-    --more:#E3A652;--more-soft:#3A2B17;--fewer:#93A9F2;--fewer-soft:#1D2848;
-    --choice:#A5ABA7;--choice-soft:#2A2F32;
   }
 }
 :root[data-theme="dark"]{
+  --cal:#1A1613;--paper:#231E1A;--ink:#EEE5D8;--muted:#A99B8D;--rule:#3A3029;
+  --more:#E58A63;--more-soft:#3A2218;--more-plane:#9E4123;
+  --fewer:#7CC4AA;--fewer-soft:#15302A;--fewer-plane:#1E5547;
+  --choice:#AEA294;--choice-soft:#2C2621;--on-plane:#FBF1E6;
   color-scheme:dark;
-  --ground:#131619;--paper:#1A1E22;--ink:#E4E7E1;--muted:#9BA29D;--rule:#30363A;
-  --more:#E3A652;--more-soft:#3A2B17;--fewer:#93A9F2;--fewer-soft:#1D2848;
-  --choice:#A5ABA7;--choice-soft:#2A2F32;
 }
+
 *{box-sizing:border-box}
-body{background:var(--ground);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.6;padding-inline:20px;padding-block:0 64px}
-a{color:inherit;text-decoration-color:var(--fewer);text-underline-offset:3px}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--cal);color:var(--ink);
+  font-family:var(--body);font-size:19px;line-height:1.6;
+  padding-left:max(20px,env(safe-area-inset-left,0px));
+  padding-right:max(20px,env(safe-area-inset-right,0px));
+  padding-block:0 80px;
+}
+a{color:inherit;text-decoration-color:var(--more);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
 a:focus-visible{outline:2px solid var(--fewer);outline-offset:2px}
-.wrap{max-width:1040px;margin:0 auto}
+.wrap{max-width:calc(var(--rail) + var(--text) + var(--note) + 2 * var(--gap));margin:0 auto}
+p{margin:0 0 22px}
+em{font-style:italic}
 
-/* Hero */
-header.hero{padding-block:56px 40px;border-bottom:2px solid var(--ink)}
-.eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 18px}
-h1{font-family:var(--display);font-stretch:68%;font-weight:850;font-size:clamp(52px,11vw,124px);line-height:.88;letter-spacing:-.01em;margin:18px 0 28px;text-transform:uppercase;text-wrap:balance}
-.slogans{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--rule)}
-.slogan{padding:22px 24px 22px 0}
-.slogan + .slogan{padding-left:24px;border-left:1px solid var(--rule)}
-.slogan q{display:block;font-family:var(--display);font-stretch:80%;font-weight:750;font-size:clamp(26px,4.2vw,42px);line-height:1.02;quotes:"“" "”"}
-.slogan.more q{color:var(--more)}
-.slogan.fewer q{color:var(--fewer)}
-.slogan .tr{font-style:italic;color:var(--muted);font-size:16px;margin-top:6px}
-.slogan .who{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-top:10px}
-.dek{max-width:680px;font-size:21px;line-height:1.5;margin:28px 0 0}
-@media (max-width:620px){
-  .slogans{grid-template-columns:1fr}
-  .slogan{padding:18px 0}
-  .slogan + .slogan{padding-left:0;border-left:0;border-top:1px solid var(--rule)}
+/* Utility label face */
+.label,.eyebrow,.sec-head .ref,.tl-head,thead th,figcaption,.stat .l,.tier .d,footer{
+  font-family:var(--display);font-stretch:88%;font-weight:500;
+  font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);line-height:1.45;
 }
 
-/* Key */
-.key{display:flex;flex-wrap:wrap;gap:10px 22px;font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-top:26px}
-.key span{display:inline-flex;align-items:center;gap:8px}
-.dot{width:11px;height:11px;border-radius:50%;display:inline-block;flex:none}
-.dot.more{background:var(--more)}.dot.fewer{background:var(--fewer)}.dot.choice{background:var(--choice)}
-
-/* Sections */
-section{padding-block:56px 8px}
-.sec-head{display:grid;grid-template-columns:minmax(0,680px) minmax(0,1fr);gap:40px;align-items:end;border-bottom:1px solid var(--rule);padding-bottom:12px;margin-bottom:28px}
-h2{font-family:var(--display);font-stretch:75%;font-weight:800;font-size:clamp(32px,5vw,48px);line-height:1;margin:0;text-transform:uppercase;text-wrap:balance}
-.sec-head .ref{font-family:var(--mono);font-size:12.5px;color:var(--muted);text-align:right}
-h3{font-family:var(--display);font-stretch:90%;font-weight:700;font-size:22px;line-height:1.2;margin:34px 0 8px;text-wrap:balance}
-.row{display:grid;grid-template-columns:minmax(0,680px) minmax(0,1fr);gap:40px;align-items:start}
-.row > p,.row > div.body{margin:0 0 20px}
-.note{font-family:var(--mono);font-size:12.5px;line-height:1.55;color:var(--muted);border-top:2px solid var(--rule);padding-top:8px;margin-top:6px}
-.note.more{border-top-color:var(--more)}
-.note.fewer{border-top-color:var(--fewer)}
-.note b{color:var(--ink);font-weight:500}
-@media (max-width:880px){
-  .row,.sec-head{grid-template-columns:1fr;gap:0}
-  .sec-head .ref{text-align:left;margin-top:8px}
-  .note{margin:0 0 24px}
+/* ---------- Hero ---------- */
+header.hero{padding-block:56px 8px}
+.eyebrow{display:flex;flex-wrap:wrap;gap:6px 28px}
+h1{
+  font-family:var(--display);font-stretch:125%;font-weight:800;
+  font-size:clamp(38px,7vw,96px);line-height:.94;letter-spacing:-.015em;
+  text-transform:uppercase;margin:22px 0 40px;text-wrap:balance;
 }
-p{max-width:680px}
-.lede{font-size:20px}
-
-/* Toolkit table */
-.table-wrap{overflow-x:auto;margin:8px 0 12px;border:1px solid var(--rule);background:var(--paper)}
-table{border-collapse:collapse;width:100%;min-width:620px;font-size:16px;line-height:1.45}
-th,td{text-align:left;vertical-align:top;padding:12px 16px;border-bottom:1px solid var(--rule)}
-tr:last-child td{border-bottom:0}
-thead th{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);background:var(--ground)}
-thead th.more{color:var(--more)}thead th.fewer{color:var(--fewer)}
-tbody th{font-family:var(--display);font-stretch:90%;font-weight:700;font-size:17px;width:17%}
-
-/* Timeline */
-.timeline{border-top:2px solid var(--ink);margin-top:8px}
-.tl-head,.tl-row{display:grid;grid-template-columns:72px minmax(0,1fr) minmax(0,1fr);gap:0 24px}
-.tl-head{font-family:var(--mono);font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding:10px 0;border-bottom:1px solid var(--rule)}
-.tl-row{padding:14px 0;border-bottom:1px solid var(--rule)}
-.yr{font-family:var(--mono);font-weight:500;font-size:15px;font-variant-numeric:tabular-nums;padding-top:2px}
-.ev{font-size:16px;line-height:1.45;padding-left:14px;border-left:3px solid transparent}
-.ev.more{border-left-color:var(--more)}
-.ev.fewer{border-left-color:var(--fewer)}
-.ev.choice{border-left-color:var(--choice)}
-.ev:empty{border-left:0}
-.ev .lbl{display:none;font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
-@media (max-width:620px){
-  .tl-head{display:none}
-  .tl-row{grid-template-columns:58px minmax(0,1fr);gap:8px 12px}
-  .tl-row .ev:nth-child(3){grid-column:2}
-  .ev .lbl{display:block}
-  .ev:empty{display:none}
+.planes{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:10px}
+.plane{
+  min-height:300px;padding:30px 32px 28px;
+  display:flex;flex-direction:column;justify-content:space-between;gap:36px;
+  color:var(--on-plane);
 }
+.plane.more{background:var(--more-plane)}
+.plane.fewer{background:var(--fewer-plane)}
+.plane .yr{font-family:var(--display);font-stretch:125%;font-weight:700;font-size:15px;letter-spacing:.12em}
+.plane q{
+  display:block;quotes:"\201C" "\201D";
+  font-family:var(--display);font-stretch:112%;font-weight:700;
+  font-size:clamp(28px,3.5vw,48px);line-height:1.04;text-wrap:balance;
+}
+.plane .tr{font-style:italic;font-size:20px;margin-top:12px}
+.plane .who{font-family:var(--display);font-stretch:88%;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
 
-/* Chart */
-figure{margin:12px 0 28px;max-width:720px}
-.chart{background:var(--paper);border:1px solid var(--rule);padding:16px 12px 8px;overflow-x:auto}
+/* ---------- Grid rows ---------- */
+.row{
+  display:grid;
+  grid-template-columns:[rail] var(--rail) [text] minmax(0,var(--text)) [note] minmax(0,var(--note));
+  column-gap:var(--gap);align-items:start;
+}
+.row > *{min-width:0}
+.row > p,.row > .text,.row > ol,.row > figure,.row > .tiers{grid-column:text}
+.row > h3,.row > .rail{grid-column:rail}
+.row > .note,.row > .key{grid-column:note}
+.row > .span{grid-column:text / -1}
+.row > .full{grid-column:1 / -1}
+
+.dek{font-size:24px;line-height:1.45;margin:44px 0 0}
+.key{list-style:none;margin:52px 0 0;padding:0;display:grid;gap:10px}
+.key li{display:flex;align-items:baseline;gap:10px;font-family:var(--display);font-stretch:88%;font-size:14px;line-height:1.35;color:var(--muted)}
+.sw{width:12px;height:12px;flex:none;transform:translateY(1px)}
+.sw.more{background:var(--more)}.sw.fewer{background:var(--fewer)}.sw.choice{background:var(--choice)}
+
+/* ---------- Sections ---------- */
+section{padding-block:88px 8px}
+.sec-head{
+  display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:10px 40px;
+  border-top:2px solid var(--ink);padding-top:18px;margin-bottom:40px;
+}
+h2{
+  font-family:var(--display);font-stretch:118%;font-weight:800;
+  font-size:clamp(28px,3.5vw,46px);line-height:1.02;letter-spacing:-.01em;
+  text-transform:uppercase;margin:0;max-width:20em;text-wrap:balance;
+}
+h3{
+  font-family:var(--display);font-stretch:100%;font-weight:700;
+  font-size:18px;line-height:1.25;margin:5px 0 16px;text-wrap:balance;
+}
+.lede{font-size:22px;line-height:1.5}
+.c-more{color:var(--more)}.c-fewer{color:var(--fewer)}
+
+/* Margin notes */
+.note{
+  font-family:var(--display);font-stretch:92%;font-size:14.5px;line-height:1.55;color:var(--muted);
+  border-top:1px solid var(--rule);padding-top:12px;margin:6px 0 26px;
+}
+.note b{
+  display:flex;align-items:center;gap:9px;margin-bottom:6px;
+  color:var(--ink);font-weight:650;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;
+}
+.note b::before{content:"";width:10px;height:10px;flex:none;background:var(--choice)}
+.note.more b::before{background:var(--more)}
+.note.fewer b::before{background:var(--fewer)}
+.figs{list-style:none;margin:4px 0 0;padding:0;font-variant-numeric:tabular-nums}
+.figs li{display:flex;justify-content:space-between;gap:12px;padding:3px 0;border-bottom:1px dotted var(--rule)}
+.figs li:last-child{border-bottom:0}
+.figs span:last-child{color:var(--ink)}
+
+/* ---------- Toolkit table ---------- */
+.table-wrap{overflow-x:auto;margin:6px 0 8px}
+table{border-collapse:collapse;width:100%;min-width:680px;font-size:17px;line-height:1.45}
+th,td{text-align:left;vertical-align:top;padding:16px 20px}
+thead th{padding-block:12px;border-bottom:2px solid var(--ink)}
+thead th.more{background:var(--more-soft);color:var(--more)}
+thead th.fewer{background:var(--fewer-soft);color:var(--fewer)}
+tbody tr + tr > *{border-top:1px solid var(--rule)}
+tbody th{font-family:var(--display);font-stretch:112%;font-weight:700;font-size:16px;width:18%}
+
+/* ---------- Timeline ---------- */
+.timeline{margin-top:4px}
+.tl-head,.tl-row{display:grid;grid-template-columns:6rem minmax(0,1fr) minmax(0,1fr);gap:0 10px}
+.tl-head{padding-bottom:10px;border-bottom:2px solid var(--ink)}
+.tl-row{padding-block:5px;border-bottom:1px solid var(--rule)}
+.yr{font-family:var(--display);font-stretch:112%;font-weight:700;font-size:18px;font-variant-numeric:tabular-nums;padding-top:9px}
+.ev{font-size:17px;line-height:1.45;padding:10px 16px}
+.ev.more{background:var(--more-soft)}
+.ev.fewer{background:var(--fewer-soft)}
+.ev.choice{background:var(--choice-soft)}
+.ev .lbl{display:none;font-family:var(--display);font-stretch:88%;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+
+/* ---------- Mexico data ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0 0 30px}
+.stat{background:var(--paper);padding:18px 18px 16px}
+.stat .n{font-family:var(--display);font-stretch:118%;font-weight:800;font-size:38px;line-height:1;font-variant-numeric:tabular-nums}
+.stat .n.fewer{color:var(--fewer)}
+.stat .l{margin-top:10px;font-size:12px;text-transform:none;letter-spacing:.02em;font-size:13.5px}
+figure{margin:0 0 30px}
+.chart{background:var(--paper);padding:20px 14px 10px;overflow-x:auto}
 .chart svg{display:block;width:100%;height:auto;min-width:520px}
-.chart text{font-family:var(--mono);font-size:12px;fill:var(--muted)}
-.chart .val{fill:var(--ink);font-weight:500;font-size:13px}
+.chart text{font-family:var(--display);font-stretch:90%;font-size:12px;fill:var(--muted)}
+.chart .val{fill:var(--ink);font-weight:650;font-size:13px}
 .chart .grid{stroke:var(--rule);stroke-width:1}
 .chart .axis{stroke:var(--muted);stroke-width:1}
-.chart .repl{stroke:var(--more);stroke-width:1.25;stroke-dasharray:5 4}
+.chart .repl{stroke:var(--more);stroke-width:1.5;stroke-dasharray:5 4}
 .chart .repl-t{fill:var(--more)}
-.chart .line{stroke:var(--fewer);stroke-width:2.5;fill:none}
+.chart .line{stroke:var(--fewer);stroke-width:3;fill:none}
 .chart .gap{stroke:var(--fewer);stroke-width:2;fill:none;stroke-dasharray:3 5}
 .chart .pt{fill:var(--fewer);stroke:var(--paper);stroke-width:2}
 .chart .event{stroke:var(--ink);stroke-width:1;stroke-dasharray:2 3}
 .chart .event-t{fill:var(--ink)}
-figcaption{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-top:10px;line-height:1.55}
+figcaption{margin-top:12px;text-transform:none;letter-spacing:.01em;font-size:13.5px}
 
-/* Stat strip */
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:8px 0 28px;max-width:720px}
-.stat{padding:14px 14px 14px 0}
-.stat + .stat{padding-left:14px;border-left:1px solid var(--rule)}
-.stat .n{font-family:var(--display);font-stretch:75%;font-weight:800;font-size:36px;line-height:1;font-variant-numeric:tabular-nums}
-.stat .n.fewer{color:var(--fewer)}.stat .n.more{color:var(--more)}
-.stat .l{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:6px;line-height:1.4}
-@media (max-width:620px){
-  .stats{grid-template-columns:1fr 1fr}
-  .stat:nth-child(3){padding-left:0;border-left:0}
-  .stat:nth-child(n+3){border-top:1px solid var(--rule)}
+/* ---------- USSR ---------- */
+.tiers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:2px 0 30px}
+.tier{background:var(--more-soft);padding:18px 18px 16px}
+.tier .k{font-family:var(--display);font-stretch:118%;font-weight:800;font-size:34px;line-height:1;color:var(--more);font-variant-numeric:tabular-nums}
+.tier .t{font-family:var(--display);font-weight:700;font-size:16px;line-height:1.25;margin-top:10px}
+.tier .d{margin-top:4px;text-transform:none;letter-spacing:.02em;font-size:13.5px}
+
+.pull{
+  margin:14px 0 40px;padding:22px 0 24px;border-top:2px solid var(--ink);border-bottom:1px solid var(--rule);
+  font-style:italic;font-size:clamp(23px,2.6vw,30px);line-height:1.3;max-width:36em;text-wrap:balance;
 }
 
-/* Medal tiers */
-.tiers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:680px;margin:6px 0 24px}
-.tier{border:1px solid var(--rule);background:var(--paper);padding:14px 16px}
-.tier .k{font-family:var(--display);font-stretch:75%;font-weight:800;font-size:30px;color:var(--more);line-height:1}
-.tier .t{font-family:var(--display);font-stretch:90%;font-weight:700;font-size:16px;margin-top:6px}
-.tier .d{font-size:14.5px;color:var(--muted);margin-top:2px;line-height:1.4}
-@media (max-width:560px){.tiers{grid-template-columns:1fr}}
-
-/* Pull */
-.pull{max-width:680px;margin:14px 0 28px;padding:18px 0;border-top:2px solid var(--ink);border-bottom:1px solid var(--rule);font-family:var(--display);font-stretch:85%;font-weight:650;font-size:clamp(22px,3.2vw,28px);line-height:1.22;text-wrap:balance}
-
-/* Questions */
-ol.qs{max-width:680px;padding-left:1.4em;margin:0 0 20px}
-ol.qs li{margin-bottom:12px}
-ol.qs li::marker{font-family:var(--mono);color:var(--muted);font-size:14px}
-
-/* Sources */
-.sources{font-size:15.5px;line-height:1.5;max-width:780px;padding-left:1.4em}
-.sources li{margin-bottom:10px}
+/* ---------- Questions and sources ---------- */
+ol.qs{margin:0 0 20px;padding-left:2.2em}
+ol.qs li{margin-bottom:14px;padding-left:.3em}
+ol.qs li::marker{font-family:var(--display);font-stretch:112%;font-weight:700;font-size:16px;color:var(--more)}
+.sources{margin:0;padding-left:1.8em;font-size:16px;line-height:1.5;columns:2 22rem;column-gap:var(--gap)}
+.sources li{margin-bottom:12px;break-inside:avoid;padding-left:.2em}
+.sources li::marker{font-family:var(--display);font-size:13px;color:var(--muted)}
 .sources .pub{color:var(--muted)}
-footer{margin-top:56px;padding-top:16px;border-top:2px solid var(--ink);font-family:var(--mono);font-size:12.5px;color:var(--muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px}
-@media (prefers-reduced-motion:no-preference){ html{scroll-behavior:smooth} }
+
+footer{margin-top:72px;padding-top:16px;border-top:2px solid var(--ink);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1180px){
+  .row{grid-template-columns:[text] minmax(0,1fr) [note] minmax(0,15rem)}
+  .row > h3,.row > .rail{grid-column:text}
+  .row > .full{grid-column:1 / -1}
+}
+@media (max-width:820px){
+  body{font-size:18px}
+  .row{grid-template-columns:minmax(0,1fr)}
+  .row > *,.row > p,.row > ol,.row > figure,.row > .text,.row > .tiers,
+  .row > .span,.row > .full,.row > .note,.row > .key,.row > h3,.row > .rail{grid-column:1}
+  .note{margin:0 0 30px}
+  .key{margin:28px 0 0;display:flex;flex-wrap:wrap;gap:8px 20px}
+  .dek{font-size:21px;margin-top:32px}
+  .planes{grid-template-columns:minmax(0,1fr)}
+  .plane{min-height:0;gap:28px;padding:24px 22px}
+  section{padding-top:64px}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sources{columns:1}
+}
+@media (max-width:620px){
+  .tl-head{display:none}
+  .tl-row{grid-template-columns:3.6rem minmax(0,1fr);gap:6px 10px}
+  .tl-row .ev:nth-child(3){grid-column:2}
+  .ev:empty{display:none}
+  .ev .lbl{display:block}
+  .tiers{grid-template-columns:minmax(0,1fr)}
+  .lede{font-size:20px}
+}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 </style>
 </head>
 <body>
@@ -181,23 +259,31 @@ footer{margin-top:56px;padding-top:16px;border-top:2px solid var(--ink);font-fam
 <header class="hero">
   <div class="eyebrow"><span>ARCH 3198 · Fall 2026</span><span>University of Houston · Hines College</span><span>Patricio Riviello</span></div>
   <h1>The State and the Cradle</h1>
-  <div class="slogans">
-    <div class="slogan more">
-      <q>Gobernar es poblar</q>
-      <div class="tr">To govern is to populate</div>
+  <div class="planes">
+    <div class="plane more">
+      <span class="yr">1969</span>
+      <div>
+        <q>Gobernar es poblar</q>
+        <div class="tr">To govern is to populate</div>
+      </div>
       <div class="who">Luis Echeverría, presidential campaign, Dec. 1969</div>
     </div>
-    <div class="slogan fewer">
-      <q>La familia pequeña vive mejor</q>
-      <div class="tr">The small family lives better</div>
-      <div class="who">Federal family-planning campaign, 1975 — Echeverría in office</div>
+    <div class="plane fewer">
+      <span class="yr">1975</span>
+      <div>
+        <q>La familia pequeña vive mejor</q>
+        <div class="tr">The small family lives better</div>
+      </div>
+      <div class="who">Federal family-planning campaign, 1975, Echeverría in office</div>
     </div>
   </div>
-  <p class="dek">The same Mexican president said both. This page looks at how governments decide how many children their citizens should have, and at the laws, money, medals, clinics and buildings they use to push the number up or down. The two main cases are Mexico and the Soviet Union.</p>
-  <div class="key" aria-label="Color key">
-    <span><i class="dot more"></i>Policy pushing for more births</span>
-    <span><i class="dot fewer"></i>Policy pushing for fewer births</span>
-    <span><i class="dot choice"></i>Policy widening individual choice</span>
+  <div class="row">
+    <p class="dek">The same Mexican president said both. This page looks at how governments decide how many children their citizens should have, and at the laws, money, medals, clinics and buildings they use to push the number up or down. The two main cases are Mexico and the Soviet Union.</p>
+    <ul class="key" aria-label="Color key">
+      <li><i class="sw more"></i>Policy pushing for more births</li>
+      <li><i class="sw fewer"></i>Policy pushing for fewer births</li>
+      <li><i class="sw choice"></i>Policy widening individual choice</li>
+    </ul>
   </div>
 </header>
 
@@ -205,23 +291,20 @@ footer{margin-top:56px;padding-top:16px;border-top:2px solid var(--ink);font-fam
   <div class="sec-head"><h2>Why this topic</h2><div class="ref">Origin: ITAM, “Problemas sociales”</div></div>
   <div class="row">
     <p class="lede">Before transferring to UH, I studied at ITAM in Mexico City. In a social problems course there, I read a book about the methods governments use to manage their populations: how public services and incentives are arranged so that people have more children, or fewer. The book compared several states, including Mexico and the Soviet Union.</p>
-    <aside class="note"><b>Assignment brief.</b> Choose a topic you consider knowledge worth having, research it, and present it.</aside>
+    <aside class="note"><b>Assignment brief</b>Choose a topic you consider knowledge worth having, research it, and present it.</aside>
   </div>
   <div class="row">
     <p>What stayed with me is that a decision most people think of as the most private one in their lives is, in aggregate, something states plan for and try to steer. They rarely do it by force alone. More often they change the conditions around the decision: what contraception costs, what a family gets paid, who gets an apartment first, whether there is a nursery at the factory.</p>
-    <div></div>
   </div>
   <div class="row">
     <p>As an architecture student, that last category matters to me. Housing, clinics and childcare are built things. When a government sets the size of an apartment or decides who qualifies for it, it is also making an assumption about family size, and sometimes trying to change it.</p>
-    <div></div>
   </div>
 </section>
 
 <section id="toolkit">
   <div class="sec-head"><h2>The toolkit</h2><div class="ref">Five levers, used in both directions</div></div>
   <div class="row">
-    <p>Demographers group these interventions under <em>population policy</em>. Policies meant to raise births are called <strong style="color:var(--more)">pronatalist</strong>; policies meant to lower them are <strong style="color:var(--fewer)">antinatalist</strong> or, more politely, family-planning policies. The instruments are largely the same. Only the direction changes.</p>
-    <div></div>
+    <p>Demographers group these interventions under <em>population policy</em>. Policies meant to raise births are called <strong class="c-more">pronatalist</strong>; policies meant to lower them are <strong class="c-fewer">antinatalist</strong> or, more politely, family-planning policies. The instruments are largely the same. Only the direction changes.</p>
   </div>
   <div class="table-wrap">
     <table>
@@ -258,80 +341,83 @@ footer{margin-top:56px;padding-top:16px;border-top:2px solid var(--ink);font-fam
 <section id="mexico">
   <div class="sec-head"><h2>Mexico: from populate to “let’s be fewer”</h2><div class="ref">DOF, 7 enero 1974</div></div>
 
-  <h3>The pronatalist decades, 1936–1970</h3>
   <div class="row">
+    <h3>The pronatalist decades, 1936–1970</h3>
     <p>After the Revolution, Mexican leaders saw an empty country. The 1936 Ley General de Población set out to grow the population: more marriages and births, lower mortality, the return of Mexicans living abroad, and selective immigration. The sale of contraceptives was prohibited, and some states taxed unmarried adults. The 1947 law kept the same direction. President Miguel Alemán argued that half a million new Mexicans a year secured the country’s economic development.</p>
-    <aside class="note more"><b>1936 law.</b> Interior Secretary Ignacio García Téllez: growth should come from “el crecimiento natural” of the Mexican people.</aside>
+    <aside class="note more"><b>1936 law</b>Interior Secretary Ignacio García Téllez: growth should come from “el crecimiento natural” of the Mexican people.</aside>
   </div>
   <div class="row">
     <p>It worked in the sense that the population boomed, though falling mortality did more than any law. By 1974 Mexico had about 60 million people, growing 3.5% a year, fast enough to double in 20 years. Women averaged about six children.</p>
-    <div></div>
   </div>
 
-  <h3>The reversal, 1970–1976</h3>
   <div class="row">
+    <h3>The reversal, 1970–1976</h3>
     <p>Luis Echeverría campaigned in 1969 on “gobernar es poblar.” Within a year of taking office he was warning that population growth could outrun economic development. In February 1973 the government lifted the ban on selling and advertising contraceptives. On 7 January 1974 a new Ley General de Población took effect with the opposite goal: regulate the size, structure and distribution of the population. It created the Consejo Nacional de Población (CONAPO) to plan it. The same year, Article 4 of the Constitution was amended to give every person the right to decide freely, responsibly and in an informed way on the number and spacing of their children.</p>
-    <aside class="note fewer"><b>CONAPO growth targets.</b><br>1982: 2.5%<br>1988: 1.9%<br>1994: 1.4%<br>2000: 1.0%</aside>
+    <aside class="note fewer"><b>CONAPO growth targets</b>
+      <ul class="figs"><li><span>1982</span><span>2.5%</span></li><li><span>1988</span><span>1.9%</span></li><li><span>1994</span><span>1.4%</span></li><li><span>2000</span><span>1.0%</span></li></ul>
+    </aside>
   </div>
   <div class="row">
     <p>The law came with a media machine. The first campaign in 1974 printed three million leaflets and half a million posters and ran on radio and television. Its slogan, “Vámonos haciendo menos,” played on “let’s become fewer” and “let’s become less”: less passive, less macho, less irresponsible, less ostentatious. Later campaigns followed: “La familia pequeña vive mejor” (1975), “Señora, usted decide si se embaraza” (1976), and “Tener hijos es cuestión de pareja” (1978). Family-planning readings entered the free sixth-grade textbooks. CONAPO’s logo showed a family of four, a picture of the target of two children.</p>
-    <aside class="note"><b>Mexican science.</b> Norethindrone, the progestin in early birth-control pills, was first synthesized in Mexico City in 1951, from compounds derived from a wild Mexican yam.</aside>
+    <aside class="note"><b>Mexican science</b>Norethindrone, the progestin in early birth-control pills, was first synthesized in Mexico City in 1951, from compounds derived from a wild Mexican yam.</aside>
   </div>
 
-  <h3>What happened</h3>
-  <div class="stats">
-    <div class="stat"><div class="n">3.5%</div><div class="l">annual growth, 1974</div></div>
-    <div class="stat"><div class="n fewer">2.2%</div><div class="l">annual growth, 1982</div></div>
-    <div class="stat"><div class="n fewer">30%</div><div class="l">of women using contraception, 1976</div></div>
-    <div class="stat"><div class="n fewer">50.8%</div><div class="l">of contraceptive users rely on female sterilization</div></div>
-  </div>
-  <figure>
-    <div class="chart">
-      <svg viewBox="0 0 660 280" role="img" aria-label="Line chart of Mexico's total fertility rate: 6.0 in 1974, 2.2 in 2014, 1.9 in 2019, 1.2 in 2024, against a replacement level of 2.1.">
-        <line class="grid" x1="50" y1="240" x2="620" y2="240"/>
-        <line class="grid" x1="50" y1="177.1" x2="620" y2="177.1"/>
-        <line class="grid" x1="50" y1="114.3" x2="620" y2="114.3"/>
-        <line class="grid" x1="50" y1="51.4" x2="620" y2="51.4"/>
-        <text x="40" y="244" text-anchor="end">0</text>
-        <text x="40" y="181" text-anchor="end">2</text>
-        <text x="40" y="118" text-anchor="end">4</text>
-        <text x="40" y="55" text-anchor="end">6</text>
-        <line class="axis" x1="50" y1="240" x2="620" y2="240"/>
-        <text x="50" y="262" text-anchor="middle">1970</text>
-        <text x="151.8" y="262" text-anchor="middle">1980</text>
-        <text x="253.6" y="262" text-anchor="middle">1990</text>
-        <text x="355.5" y="262" text-anchor="middle">2000</text>
-        <text x="457.3" y="262" text-anchor="middle">2010</text>
-        <text x="559.1" y="262" text-anchor="middle">2020</text>
-        <line class="repl" x1="50" y1="174" x2="620" y2="174"/>
-        <text class="repl-t" x="58" y="166">replacement 2.1</text>
-        <line class="event" x1="90.7" y1="20" x2="90.7" y2="240"/>
-        <text class="event-t" x="97" y="30">1974 · CONAPO</text>
-        <path class="gap" d="M90.7 51.4 L498 170.9"/>
-        <path class="line" d="M498 170.9 L549 180.3 L600 202.3"/>
-        <circle class="pt" cx="90.7" cy="51.4" r="5"/>
-        <circle class="pt" cx="498" cy="170.9" r="5"/>
-        <circle class="pt" cx="549" cy="180.3" r="5"/>
-        <circle class="pt" cx="600" cy="202.3" r="5"/>
-        <text class="val" x="104" y="56">6.0</text>
-        <text class="val" x="490" y="197" text-anchor="end">2.2</text>
-        <text class="val" x="549" y="203" text-anchor="middle">1.9</text>
-        <text class="val" x="610" y="222" text-anchor="middle">1.2</text>
-      </svg>
+  <div class="row">
+    <h3>What happened</h3>
+    <div class="stats span">
+      <div class="stat"><div class="n">3.5%</div><div class="l">annual growth, 1974</div></div>
+      <div class="stat"><div class="n fewer">2.2%</div><div class="l">annual growth, 1982</div></div>
+      <div class="stat"><div class="n fewer">30%</div><div class="l">of women using contraception, 1976</div></div>
+      <div class="stat"><div class="n fewer">50.8%</div><div class="l">of contraceptive users rely on female sterilization</div></div>
     </div>
-    <figcaption>Children per woman in Mexico (total fertility rate). Dots are published figures for 1974, 2014, 2019 and 2024; the dotted segment joins two distant data points and does not show the year-by-year path. Sources: Partida Bush (2014); INEGI, Encuesta Intercensal 2025.</figcaption>
-  </figure>
+  </div>
+  <div class="row">
+    <figure>
+      <div class="chart">
+        <svg viewBox="0 0 660 280" role="img" aria-label="Line chart of Mexico's total fertility rate: 6.0 in 1974, 2.2 in 2014, 1.9 in 2019, 1.2 in 2024, against a replacement level of 2.1.">
+          <line class="grid" x1="50" y1="240" x2="620" y2="240"/>
+          <line class="grid" x1="50" y1="177.1" x2="620" y2="177.1"/>
+          <line class="grid" x1="50" y1="114.3" x2="620" y2="114.3"/>
+          <line class="grid" x1="50" y1="51.4" x2="620" y2="51.4"/>
+          <text x="40" y="244" text-anchor="end">0</text>
+          <text x="40" y="181" text-anchor="end">2</text>
+          <text x="40" y="118" text-anchor="end">4</text>
+          <text x="40" y="55" text-anchor="end">6</text>
+          <line class="axis" x1="50" y1="240" x2="620" y2="240"/>
+          <text x="50" y="262" text-anchor="middle">1970</text>
+          <text x="151.8" y="262" text-anchor="middle">1980</text>
+          <text x="253.6" y="262" text-anchor="middle">1990</text>
+          <text x="355.5" y="262" text-anchor="middle">2000</text>
+          <text x="457.3" y="262" text-anchor="middle">2010</text>
+          <text x="559.1" y="262" text-anchor="middle">2020</text>
+          <line class="repl" x1="50" y1="174" x2="620" y2="174"/>
+          <text class="repl-t" x="58" y="166">replacement 2.1</text>
+          <line class="event" x1="90.7" y1="20" x2="90.7" y2="240"/>
+          <text class="event-t" x="97" y="30">1974 · CONAPO</text>
+          <path class="gap" d="M90.7 51.4 L498 170.9"/>
+          <path class="line" d="M498 170.9 L549 180.3 L600 202.3"/>
+          <circle class="pt" cx="90.7" cy="51.4" r="5"/>
+          <circle class="pt" cx="498" cy="170.9" r="5"/>
+          <circle class="pt" cx="549" cy="180.3" r="5"/>
+          <circle class="pt" cx="600" cy="202.3" r="5"/>
+          <text class="val" x="104" y="56">6.0</text>
+          <text class="val" x="490" y="197" text-anchor="end">2.2</text>
+          <text class="val" x="549" y="203" text-anchor="middle">1.9</text>
+          <text class="val" x="610" y="222" text-anchor="middle">1.2</text>
+        </svg>
+      </div>
+      <figcaption>Children per woman in Mexico (total fertility rate). Dots are published figures for 1974, 2014, 2019 and 2024; the dotted segment joins two distant data points and does not show the year-by-year path. Sources: Partida Bush (2014); INEGI, Encuesta Intercensal 2025.</figcaption>
+    </figure>
+  </div>
   <div class="row">
     <p>By 2014 fertility was 2.2 and growth was about 1% a year. Mexico had about 127 million people in 2014, against 1970s projections of more than 150 million. Demographers still debate how much of the drop the policy caused and how much urbanization, women’s schooling and work would have produced anyway.</p>
-    <div></div>
   </div>
   <div class="row">
     <p>The method mix raises its own questions. In Mexico, female sterilization (tubal ligation, <em>OTB</em>) is the most common form of contraception by far, used by about half of women who use any method; vasectomy accounts for about 4%. Critics argue that public hospitals made sterilization after childbirth routine, with limited alternatives offered, and that Indigenous and migrant women were the most exposed. A program built on the language of free choice could still work as a program of control.</p>
-    <div></div>
   </div>
   <div class="row">
     <p>In September 2026, INEGI reported that fertility fell to 1.2 children per woman in 2024, down from 1.9 in 2019, with Mexico City at 0.8. Fifty years after “vámonos haciendo menos,” the policy question in Mexico is turning around again.</p>
-    <aside class="note fewer"><b>INEGI, 22–23 Sept. 2026.</b> Encuesta Intercensal 2025, 7.3 million households surveyed. Highest: Chiapas, 1.8.</aside>
+    <aside class="note fewer"><b>INEGI, 22–23 Sept. 2026</b>Encuesta Intercensal 2025, 7.3 million households surveyed. Highest: Chiapas, 1.8.</aside>
   </div>
 </section>
 
@@ -339,29 +425,32 @@ footer{margin-top:56px;padding-top:16px;border-top:2px solid var(--ink);font-fam
   <div class="sec-head"><h2>USSR: the mother as a state project</h2><div class="ref">Decree of 27 June 1936</div></div>
   <div class="row">
     <p>The Soviet story runs the other way. In 1920 the new Soviet state became the first in the modern world to legalize abortion on request. Early Bolshevik thinkers wanted to free women from housework and childcare by moving both into collective institutions: communal kitchens, laundries and crèches.</p>
-    <div></div>
   </div>
   <div class="row">
     <p>Under Stalin the priority became population, labor and soldiers. The decree of 27 June 1936 banned abortion except on medical grounds, with prison terms for doctors who performed illegal ones. It paid families with six or more children 2,000 rubles a year, for five years, for each additional child, and more for families with ten or more. It raised alimony, made divorce more expensive, and ordered a building program for 1936–1939 that included 400,000 new urban nursery places and 1.4 million urban kindergarten places.</p>
-    <aside class="note more"><b>1936 decree, building targets by 1 Jan. 1939.</b><br>11,000 urban maternity beds<br>32,000 rural maternity beds<br>400,000 urban nursery beds<br>1.4 M urban kindergarten places</aside>
+    <aside class="note more"><b>Building targets by 1 Jan. 1939</b>
+      <ul class="figs"><li><span>Urban maternity beds</span><span>11,000</span></li><li><span>Rural maternity beds</span><span>32,000</span></li><li><span>Urban nursery beds</span><span>400,000</span></li><li><span>Urban kindergarten places</span><span>1.4 M</span></li></ul>
+    </aside>
   </div>
   <div class="row">
     <p>In 1941 a 6% wage tax was placed on childless men aged 25–50 and married women aged 20–45. It lasted until the end of the Soviet Union. In July 1944, with the war’s losses in view, a new family law created a ladder of honors for mothers:</p>
-    <div></div>
   </div>
-  <div class="tiers">
-    <div class="tier"><div class="k">5–6</div><div class="t">Motherhood Medal</div><div class="d">children raised</div></div>
-    <div class="tier"><div class="k">7–9</div><div class="t">Order of Maternal Glory</div><div class="d">children raised</div></div>
-    <div class="tier"><div class="k">10+</div><div class="t">Mother Heroine</div><div class="d">about 430,000 women awarded</div></div>
+  <div class="row">
+    <div class="tiers">
+      <div class="tier"><div class="k">5–6</div><div class="t">Motherhood Medal</div><div class="d">children raised</div></div>
+      <div class="tier"><div class="k">7–9</div><div class="t">Order of Maternal Glory</div><div class="d">children raised</div></div>
+      <div class="tier"><div class="k">10+</div><div class="t">Mother Heroine</div><div class="d">about 430,000 women awarded</div></div>
+    </div>
   </div>
   <div class="row">
     <p>Mother Heroines received pension benefits, reduced utility charges and priority access to scarce goods. The honor turned childbearing into a form of public service, measured and ranked like industrial output.</p>
-    <div></div>
   </div>
-  <div class="pull">The 1936 abortion ban changed the law, not the practice. Illegal abortions continued and caused an estimated 4,000 deaths a year.</div>
+  <div class="row">
+    <p class="pull span">The 1936 abortion ban changed the law, not the practice. Illegal abortions continued and caused an estimated 4,000 deaths a year.</p>
+  </div>
   <div class="row">
     <p>Historians find that the abortion rate changed little after 1936, and that infant mortality rose between 1935 and 1940. The cash incentives did not offset it. In 1955, two years after Stalin’s death, abortion was legalized again. The medals continued. In August 2022, Vladimir Putin revived the Mother Heroine title in Russia with a payment of one million rubles.</p>
-    <aside class="note more"><b>Reading.</b> Mie Nakachi’s work on the 1944 family law traces how it was drafted and who it was meant to serve.</aside>
+    <aside class="note more"><b>Reading</b>Mie Nakachi’s work on the 1944 family law traces how it was drafted and who it was meant to serve.</aside>
   </div>
 </section>
 
@@ -369,61 +458,64 @@ footer{margin-top:56px;padding-top:16px;border-top:2px solid var(--ink);font-fam
   <div class="sec-head"><h2>Where architecture comes in</h2><div class="ref">Housing, nurseries, clinics</div></div>
   <div class="row">
     <p class="lede">In both countries, the state’s idea of the family ended up built into housing. Unit sizes, shared facilities and the rules for who gets a home all assume a certain number of children.</p>
-    <div></div>
   </div>
 
-  <h3>Narkomfin Building, Moscow, 1928–1930</h3>
   <div class="row">
+    <h3>Narkomfin Building, Moscow, 1928–1930</h3>
     <p>Moisei Ginzburg and Ignaty Milinis designed Narkomfin as a “transitional” communal house. Apartments had only minimal kitchen space; residents were meant to use a communal kitchen and dining room, a laundry, a gym, a library and a crèche. The architecture was designed to take domestic work and childcare out of the family apartment and share them. It was the built form of the 1920s idea of the family. When Stalin’s government turned to the large, stable family, this model was condemned, and the ground floor was later filled in with more apartments.</p>
-    <aside class="note"><b>Social condenser.</b> Constructivist term for a building designed to change how its residents live together.</aside>
+    <aside class="note"><b>Social condenser</b>Constructivist term for a building designed to change how its residents live together.</aside>
   </div>
 
-  <h3>Khrushchyovka, from 1957</h3>
   <div class="row">
+    <h3>Khrushchyovka, from 1957</h3>
     <p>The decree of 31 July 1957 launched mass prefabricated housing across the USSR. The goal was one family per apartment, replacing shared <em>kommunalki</em>. Rooms were allocated on a simple formula of residents minus one, so a family of four got three rooms. Kitchens were 4.6 to 7.9 m². To get on the waiting list you had to have less than 4.5 m² of living space per person, and Khrushchev-era rules put families with more than five children near the front. Housing became a reward the state could give to the families it wanted.</p>
-    <aside class="note more"><b>Queue rule.</b> Sanitary minimum: 4.5 m² per person. Priority: war invalids, veterans’ families, families with more than five children.</aside>
+    <aside class="note more"><b>Queue rule</b>Sanitary minimum: 4.5 m² per person. Priority: war invalids, veterans’ families, families with more than five children.</aside>
   </div>
 
-  <h3>Centro Urbano Presidente Alemán, Mexico City, 1947–1949</h3>
   <div class="row">
+    <h3>Centro Urbano Presidente Alemán, Mexico City, 1947–1949</h3>
     <p>Mario Pani’s multifamiliar, built in the same years as the pronatalist 1947 law, was conceived as “a city within the city” for federal civil servants: apartment towers with a school, a daycare, a laundry, medical offices, sports courts, a pool and gardens. Like Narkomfin, it put services for children into the building, but here the purpose was to support the growing modern family, not to replace it.</p>
-    <div></div>
   </div>
 
-  <h3>INFONAVIT, 1972</h3>
   <div class="row">
+    <h3>INFONAVIT, 1972</h3>
     <p>Mexico’s workers’ housing fund was created in April 1972, funded by 5% of every formal worker’s salary, in the same years the government turned to family planning. The mass-produced units it financed in later decades were typically designed around a small nuclear family, the same household CONAPO’s logo showed. Building for small families both reflected and normalized the policy goal.</p>
-    <div></div>
   </div>
 
-  <div class="pull">An architect who sizes a unit for two parents and two children is making a demographic assumption. Population policy shows that governments sometimes make that assumption on purpose.</div>
+  <div class="row">
+    <p class="pull span">An architect who sizes a unit for two parents and two children is making a demographic assumption. Population policy shows that governments sometimes make that assumption on purpose.</p>
+  </div>
 </section>
 
 <section id="questions">
   <div class="sec-head"><h2>Questions to keep working on</h2><div class="ref">Next steps</div></div>
-  <ol class="qs">
-    <li>How much of Mexico’s fertility decline came from policy, and how much from urbanization, schooling and women’s work?</li>
-    <li>Where is the line between offering people choices and steering them? Mexico’s sterilization rates and the Soviet housing queue are both cases to test it.</li>
-    <li>Why do cash incentives and honors so rarely raise birth rates for long, from the USSR in 1936 to Russia today?</li>
-    <li>With fertility now at 1.2, will Mexico turn pronatalist again, and would its housing policy change with it?</li>
-    <li>For design: what would housing look like if it did not assume a single family size?</li>
-  </ol>
+  <div class="row">
+    <ol class="qs">
+      <li>How much of Mexico’s fertility decline came from policy, and how much from urbanization, schooling and women’s work?</li>
+      <li>Where is the line between offering people choices and steering them? Mexico’s sterilization rates and the Soviet housing queue are both cases to test it.</li>
+      <li>Why do cash incentives and honors so rarely raise birth rates for long, from the USSR in 1936 to Russia today?</li>
+      <li>With fertility now at 1.2, will Mexico turn pronatalist again, and would its housing policy change with it?</li>
+      <li>For design: what would housing look like if it did not assume a single family size?</li>
+    </ol>
+  </div>
 </section>
 
 <section id="sources">
   <div class="sec-head"><h2>Sources</h2><div class="ref">Consulted September 2026</div></div>
-  <ol class="sources">
-    <li>Partida Bush, V. (2014). “1974: momento crucial de la política de población.” <span class="pub"><i>Papeles de Población</i>.</span> <a href="https://www.scielo.org.mx/scielo.php?script=sci_arttext&amp;pid=S1405-74252014000300002">SciELO México</a></li>
-    <li>Cabrera Acevedo, G. (1990). “El Estado mexicano y las políticas de población.” <span class="pub"><i>Papers de Demografia</i> 47, CED–UAB.</span> <a href="https://ddd.uab.cat/pub/worpap/1990/184806/papersdemografia_a1990n47iSPA.pdf">PDF</a></li>
-    <li>“Las campañas publicitarias para ‘hacernos menos reproductivos’.” <span class="pub"><i>El Universal</i>, Mochilazo en el tiempo.</span> <a href="https://www.eluniversal.com.mx/opinion/mochilazo-en-el-tiempo/las-campanas-publicitarias-para-hacernos-menos-reproductivos/">Link</a></li>
-    <li>“La biopolítica de la esterilización femenina en México.” <span class="pub"><i>Nexos</i>, Bioética cotidiana.</span> <a href="https://bioetica.nexos.com.mx/la-biopolitica-de-la-esterilizacion-femenina-en-mexico/">Link</a></li>
-    <li>“Cayó la fecundidad más rápido de lo esperado, afirma titular del Inegi.” <span class="pub"><i>La Jornada</i>, 24 Sept. 2026.</span> <a href="https://www.jornada.com.mx/2026/09/24/economia/017n1eco">Link</a></li>
-    <li>“Protection of Motherhood” (decree of 27 June 1936). <span class="pub"><i>Seventeen Moments in Soviet History</i>, Michigan State University.</span> <a href="https://soviethistory.msu.edu/1936/abolition-of-legal-abortion/abolition-of-legal-abortion-texts/protection-of-motherhood/">Link</a></li>
-    <li>Nakachi, M. (2006). “N. S. Khrushchev and the 1944 Soviet Family Law: Politics, Reproduction, and Language.” <span class="pub"><i>East European Politics and Societies</i> 20(1).</span> <a href="https://journals.sagepub.com/doi/10.1177/0888325405284313">Link</a></li>
-    <li>“What’s in a queue? Scarce resources and notions of entitlement to public housing in Novosibirsk during Khrushchev’s housing campaign.” <span class="pub"><i>Urban History</i>, Cambridge University Press.</span> <a href="https://www.cambridge.org/core/journals/urban-history/article/whats-in-a-queue-scarce-resources-and-notions-of-entitlement-to-public-housing-in-novosibirsk-during-khrushchevs-housing-campaign/0EC998E7DB13DDF29181C839852F4CFC">Link</a></li>
-    <li>Wikipedia entries used for dates and figures: <a href="https://en.wikipedia.org/wiki/Mother_Heroine">Mother Heroine</a>, <a href="https://en.wikipedia.org/wiki/Tax_on_childlessness">Tax on childlessness</a>, <a href="https://en.wikipedia.org/wiki/Abortion_in_Russia">Abortion in Russia</a>, <a href="https://en.wikipedia.org/wiki/Narkomfin_building">Narkomfin building</a>, <a href="https://en.wikipedia.org/wiki/Khrushchevka">Khrushchevka</a>, <a href="https://en.wikipedia.org/wiki/Instituto_del_Fondo_Nacional_de_la_Vivienda_para_los_Trabajadores">INFONAVIT</a>.</li>
-    <li>“Postal: El Conjunto Urbano Presidente Alemán (CUPA).” <span class="pub"><i>Relatos e Historias en México</i>.</span> <a href="https://relatosehistorias.mx/nuestras-historias/postal-el-conjunto-urbano-presidente-aleman-cupa">Link</a></li>
-  </ol>
+  <div class="row">
+    <ol class="sources span">
+      <li>Partida Bush, V. (2014). “1974: momento crucial de la política de población.” <span class="pub"><i>Papeles de Población</i>.</span> <a href="https://www.scielo.org.mx/scielo.php?script=sci_arttext&amp;pid=S1405-74252014000300002">SciELO México</a></li>
+      <li>Cabrera Acevedo, G. (1990). “El Estado mexicano y las políticas de población.” <span class="pub"><i>Papers de Demografia</i> 47, CED–UAB.</span> <a href="https://ddd.uab.cat/pub/worpap/1990/184806/papersdemografia_a1990n47iSPA.pdf">PDF</a></li>
+      <li>“Las campañas publicitarias para ‘hacernos menos reproductivos’.” <span class="pub"><i>El Universal</i>, Mochilazo en el tiempo.</span> <a href="https://www.eluniversal.com.mx/opinion/mochilazo-en-el-tiempo/las-campanas-publicitarias-para-hacernos-menos-reproductivos/">Link</a></li>
+      <li>“La biopolítica de la esterilización femenina en México.” <span class="pub"><i>Nexos</i>, Bioética cotidiana.</span> <a href="https://bioetica.nexos.com.mx/la-biopolitica-de-la-esterilizacion-femenina-en-mexico/">Link</a></li>
+      <li>“Cayó la fecundidad más rápido de lo esperado, afirma titular del Inegi.” <span class="pub"><i>La Jornada</i>, 24 Sept. 2026.</span> <a href="https://www.jornada.com.mx/2026/09/24/economia/017n1eco">Link</a></li>
+      <li>“Protection of Motherhood” (decree of 27 June 1936). <span class="pub"><i>Seventeen Moments in Soviet History</i>, Michigan State University.</span> <a href="https://soviethistory.msu.edu/1936/abolition-of-legal-abortion/abolition-of-legal-abortion-texts/protection-of-motherhood/">Link</a></li>
+      <li>Nakachi, M. (2006). “N. S. Khrushchev and the 1944 Soviet Family Law: Politics, Reproduction, and Language.” <span class="pub"><i>East European Politics and Societies</i> 20(1).</span> <a href="https://journals.sagepub.com/doi/10.1177/0888325405284313">Link</a></li>
+      <li>“What’s in a queue? Scarce resources and notions of entitlement to public housing in Novosibirsk during Khrushchev’s housing campaign.” <span class="pub"><i>Urban History</i>, Cambridge University Press.</span> <a href="https://www.cambridge.org/core/journals/urban-history/article/whats-in-a-queue-scarce-resources-and-notions-of-entitlement-to-public-housing-in-novosibirsk-during-khrushchevs-housing-campaign/0EC998E7DB13DDF29181C839852F4CFC">Link</a></li>
+      <li>Wikipedia entries used for dates and figures: <a href="https://en.wikipedia.org/wiki/Mother_Heroine">Mother Heroine</a>, <a href="https://en.wikipedia.org/wiki/Tax_on_childlessness">Tax on childlessness</a>, <a href="https://en.wikipedia.org/wiki/Abortion_in_Russia">Abortion in Russia</a>, <a href="https://en.wikipedia.org/wiki/Narkomfin_building">Narkomfin building</a>, <a href="https://en.wikipedia.org/wiki/Khrushchevka">Khrushchevka</a>, <a href="https://en.wikipedia.org/wiki/Instituto_del_Fondo_Nacional_de_la_Vivienda_para_los_Trabajadores">INFONAVIT</a>.</li>
+      <li>“Postal: El Conjunto Urbano Presidente Alemán (CUPA).” <span class="pub"><i>Relatos e Historias en México</i>.</span> <a href="https://relatosehistorias.mx/nuestras-historias/postal-el-conjunto-urbano-presidente-aleman-cupa">Link</a></li>
+    </ol>
+  </div>
 </section>
 
 <footer><span>The State and the Cradle · ARCH 3198, Fall 2026</span><span>Research page · draft 1</span></footer>
